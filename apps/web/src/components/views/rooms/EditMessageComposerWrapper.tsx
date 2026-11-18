@@ -89,10 +89,12 @@ export function EditMessageComposerWrapper(props: IEditMessageComposerProps): JS
         />
     );
 
+    // Use a fragment rather than a wrapping element: the editor must stay a direct child of the tile's
+    // body slot so that its `overflow: visible` override applies and the autocomplete isn't clipped.
     return (
-        <div>
+        <>
             <MessageComposerUrlPreviewWrapper urlPreviewVm={vm} />
             {editor}
-        </div>
+        </>
     );
 }
